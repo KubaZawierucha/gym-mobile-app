@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Powerful Body App</string>
+    <string name="title_activity_body">BodyActivity</string>
+</resources>
