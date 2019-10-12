@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(bodyActivityIntent);
             }
         });
+
+        Button goToMuscleGroupListViewBtn = findViewById(R.id.goToMuscleGroupListViewBtn);
+        goToMuscleGroupListViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent muscleGroupListActivityIntent = new Intent(getApplicationContext(), MuscleGroupListActivity.class);
+                startActivity(muscleGroupListActivityIntent);
+            }
+        });
     }
 
 

@@ -26,20 +26,20 @@
         android:text="Body" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/goToMuscleGroupListViewBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/goToBodyScreenBtn"
         android:layout_marginTop="20dp"
-        android:text="Button" />
+        android:text="Muscles" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/button7"
+        android:layout_below="@+id/goToMuscleGroupListViewBtn"
         android:layout_marginTop="20dp"
         android:text="Button" />
 
