@@ -1,9 +1,7 @@
-package com.kubazawierucha.powerfulbodyapp;
+package com.kubazawierucha.powerfulbodyapp.DbManagement;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -36,10 +34,12 @@ public class DBManager {
 
     public Cursor getData(String tableName, String condition) {
         Cursor cursor;
+        System.out.println("I am doing: \n\t" + "SELECT * FROM " + tableName + condition);
         if (condition == null) {
             cursor = db.rawQuery("SELECT * FROM " + tableName, null);
         } else {
-            cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + condition, null);
+            //cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + condition, null);
+            cursor = db.rawQuery("SELECT * FROM " + tableName + condition, null);
         }
         return cursor;
     }

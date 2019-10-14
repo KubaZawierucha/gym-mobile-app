@@ -1,4 +1,4 @@
-package com.kubazawierucha.powerfulbodyapp;
+package com.kubazawierucha.powerfulbodyapp.BodyActivity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.kubazawierucha.powerfulbodyapp.R;
 
 public class FrontBodyFragment extends Fragment {
 

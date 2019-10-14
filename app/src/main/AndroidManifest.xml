@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MuscleGroupListActivity"></activity>
-        <activity android:name=".BodyActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MusclesActivities.MuscleDetailsActivity"></activity>
+        <activity android:name=".MusclesActivities.MuscleGroupListActivity" />
+        <activity android:name=".BodyActivity.BodyActivity" />
+        <activity android:name=".MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
