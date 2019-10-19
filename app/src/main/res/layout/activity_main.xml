@@ -18,38 +18,38 @@
         android:textSize="15pt" />
 
     <Button
-        android:id="@+id/goToBodyScreenBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/go_to_body_activity_button"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
-        android:text="Body" />
+        android:text="Exercises" />
 
     <Button
-        android:id="@+id/goToMuscleGroupListViewBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/go_to_muscle_group_list_activity_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/goToBodyScreenBtn"
+        android:layout_below="@+id/go_to_body_activity_button"
         android:layout_marginTop="20dp"
         android:text="Muscles" />
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
+        android:id="@+id/go_to_user_activity_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/goToMuscleGroupListViewBtn"
+        android:layout_below="@+id/go_to_muscle_group_list_activity_btn"
         android:layout_marginTop="20dp"
-        android:text="Button" />
+        android:text="User" />
 
     <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
+        android:id="@+id/go_to_workout_activity_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/button8"
+        android:layout_below="@id/go_to_user_activity_btn"
         android:layout_marginTop="20dp"
-        android:text="Button" />
+        android:text="Workout" />
 
 </RelativeLayout>
