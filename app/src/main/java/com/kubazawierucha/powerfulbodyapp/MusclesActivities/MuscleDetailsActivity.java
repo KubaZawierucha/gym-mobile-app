@@ -23,5 +23,9 @@ public class MuscleDetailsActivity extends AppCompatActivity {
         parents.setText(parentsString);
         children.setText(childrenString);
 
+
+
+
+
     }
 }

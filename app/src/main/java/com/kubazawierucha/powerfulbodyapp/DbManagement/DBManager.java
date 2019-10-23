@@ -34,7 +34,7 @@ public class DBManager {
 
     public Cursor getData(String tableName, String condition) {
         Cursor cursor;
-        System.out.println("I am doing: \n\t" + "SELECT * FROM " + tableName + condition);
+        //System.out.println("I am doing: \n\t" + "SELECT * FROM " + tableName + condition);
         if (condition == null) {
             cursor = db.rawQuery("SELECT * FROM " + tableName, null);
         } else {
@@ -42,5 +42,14 @@ public class DBManager {
             cursor = db.rawQuery("SELECT * FROM " + tableName + condition, null);
         }
         return cursor;
+    }
+
+    public boolean insertData(String tableName, String values) {
+        db.execSQL("INSERT INTO " + tableName + " VALUES(" + values);
+        return true;
+    }
+
+    public void deleteTable(String tableName) {
+        db.execSQL("DELETE FROM " + tableName);
     }
 }
