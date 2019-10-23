@@ -1,6 +1,6 @@
 package com.kubazawierucha.powerfulbodyapp.UserProfile;
 
-enum BMIClassifier {
+public enum BMIClassifier {
     SEVERE_THINNESS("Severe Thinness"),
     MODERATE_THINNESS("Moderate Thinness"),
     MILD_THINNESS("Mild Thinness"),
