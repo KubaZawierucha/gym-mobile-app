@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExerciseDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/detailed_exercise_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Default name"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:id="@+id/detailed_muscle_group_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Default group"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/detailed_exercise_name_text_view"
+            />
+        <TextView
+            android:id="@+id/detailed_muscle_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Main muscle:"
+            android:layout_below="@id/detailed_muscle_group_text_view"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

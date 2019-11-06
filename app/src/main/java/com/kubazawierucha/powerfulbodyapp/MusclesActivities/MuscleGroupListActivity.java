@@ -72,7 +72,7 @@ public class MuscleGroupListActivity extends AppCompatActivity {
                 Toast.makeText(this, "The Database is empty!", Toast.LENGTH_SHORT).show();
             } else {
                 while (data.moveToNext()) {
-                    itemsGroup.add(data.getString(1));
+                    itemsGroup.add(data.getString(4));
 
                 }
             }

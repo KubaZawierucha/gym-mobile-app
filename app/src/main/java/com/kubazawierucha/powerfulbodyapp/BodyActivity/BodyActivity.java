@@ -15,8 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.kubazawierucha.powerfulbodyapp.ExerciseGroupActivity;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.SingleExerciseActivity;
+import com.kubazawierucha.powerfulbodyapp.DownloadingActivity;
 
 public class BodyActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -112,10 +113,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnTouchListe
                 handledHere = true;
 
                 if (muscleGroupToSend != null) {
-                    Intent singleExerciseActivity = new Intent(getApplicationContext(), SingleExerciseActivity.class);
-                    singleExerciseActivity.putExtra("name", muscleGroupToSend);
+                    Intent exerciseGroupActivity = new Intent(getApplicationContext(), ExerciseGroupActivity.class);
+                    exerciseGroupActivity.putExtra("name", muscleGroupToSend);
                     muscleGroupToSend = null;
-                    startActivity(singleExerciseActivity);
+                    startActivity(exerciseGroupActivity);
                 }
                 break;
         }
