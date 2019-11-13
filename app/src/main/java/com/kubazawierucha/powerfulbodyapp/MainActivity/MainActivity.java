@@ -11,6 +11,7 @@ import com.kubazawierucha.powerfulbodyapp.BodyActivity.BodyActivity;
 import com.kubazawierucha.powerfulbodyapp.MusclesActivities.MuscleGroupListActivity;
 import com.kubazawierucha.powerfulbodyapp.R;
 import com.kubazawierucha.powerfulbodyapp.UserProfile.UserProfileActivity;
+import com.kubazawierucha.powerfulbodyapp.Workout.WorkoutListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent userProfileActivityIntent = new Intent(getApplicationContext(), UserProfileActivity.class);
                 startActivity(userProfileActivityIntent);
+            }
+        });
+
+        Button goToWorkoutListActivity = findViewById(R.id.go_to_workout_activity_btn);
+        goToWorkoutListActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent workoutListActivityIntent = new Intent(getApplicationContext(), WorkoutListActivity.class);
+                startActivity(workoutListActivityIntent);
             }
         });
     }

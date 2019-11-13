@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseGroupActivity">
+    tools:context=".Exercises.ExerciseGroupActivity">
 
     <TextView
         android:id="@+id/muscle_group_of_exercises"

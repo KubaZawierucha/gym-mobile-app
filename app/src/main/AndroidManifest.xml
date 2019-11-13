@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExerciseDetailsActivity"></activity>
-        <activity android:name=".ExerciseGroupActivity" />
+        <activity android:name=".Workout.WorkoutListActivity"></activity>
+        <activity android:name=".Exercises.ExerciseDetailsActivity" />
+        <activity android:name=".Exercises.ExerciseGroupActivity" />
         <activity android:name=".UserProfile.UserProfileActivity" />
         <activity android:name=".ActivityList" />
         <activity android:name=".DownloadImageActivity" />
@@ -26,9 +27,9 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

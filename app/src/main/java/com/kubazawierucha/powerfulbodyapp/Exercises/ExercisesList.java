@@ -1,7 +1,6 @@
-package com.kubazawierucha.powerfulbodyapp;
+package com.kubazawierucha.powerfulbodyapp.Exercises;
 
 import android.app.Activity;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +11,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.kubazawierucha.powerfulbodyapp.R;
+import com.kubazawierucha.powerfulbodyapp.models.Exercise;
+
 import java.util.List;
 
 public class ExercisesList extends ArrayAdapter {
 
     private final Activity context;
-    private final List<String> web;
+    private final List<Exercise> exercise;
     private final List<Integer> imageID;
 
-    public ExercisesList(Activity context, List<String> web, List<Integer> imageID) {
-        super(context, R.layout.single_exercise_list_item, web);
+    public ExercisesList(Activity context, List<Exercise> exercise, List<Integer> imageID) {
+        super(context, R.layout.single_exercise_list_item, exercise);
         this.context = context;
-        this.web = web;
+        this.exercise = exercise;
         this.imageID = imageID;
     }
 
@@ -34,7 +36,7 @@ public class ExercisesList extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.single_exercise_list_item, null, true);
         TextView txtTitle = rowView.findViewById(R.id.exercise_name_text_view);
         ImageView imageView = rowView.findViewById(R.id.exercise_image_view);
-        txtTitle.setText(web.get(position));
+        txtTitle.setText(exercise.get(position).getName());
         imageView.setImageResource(imageID.get(position));
         return rowView;
     }

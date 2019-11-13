@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.kubazawierucha.powerfulbodyapp.DAO.MuscleDAO;
+import com.kubazawierucha.powerfulbodyapp.DAO.MuscleGroupDAO;
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DBManager;
 import com.kubazawierucha.powerfulbodyapp.ListAdapters.ExpandableListAdapter;
 import com.kubazawierucha.powerfulbodyapp.R;
+import com.kubazawierucha.powerfulbodyapp.models.Muscle;
+import com.kubazawierucha.powerfulbodyapp.models.MuscleGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,27 +23,36 @@ import java.util.List;
 
 public class MuscleGroupListActivity extends AppCompatActivity {
 
+    private MuscleGroupDAO muscleGroupDAO;
+    private MuscleDAO muscleDAO;
+    private List<MuscleGroup> muscleGroupName;
+    private HashMap<MuscleGroup, List<Muscle>> muscleGroupMuscleHashMap;
+
     private DBManager myDB;
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> listHashMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muscle_group_list);
 
+        muscleGroupDAO = new MuscleGroupDAO(this);
+        muscleDAO = new MuscleDAO(this);
         listView = findViewById(R.id.muscle_group_lv);
         initData();
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listHashMap);
+        listAdapter = new ExpandableListAdapter(this, muscleGroupName, muscleGroupMuscleHashMap);
+
         listView.setAdapter(listAdapter);
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent muscleDetailsActivity = new Intent(getApplicationContext(), MuscleDetailsActivity.class);
-                muscleDetailsActivity.putExtra("parents", listAdapter.getGroup(groupPosition).toString());
-                muscleDetailsActivity.putExtra("children", listAdapter.getChild(groupPosition, childPosition).toString());
+                MuscleGroup muscleGroup = (MuscleGroup) listAdapter.getGroup(groupPosition);
+                muscleDetailsActivity.putExtra("parents", muscleGroup.getName());
+                Muscle muscle = (Muscle) listAdapter.getChild(groupPosition, childPosition);
+                muscleDetailsActivity.putExtra("children", muscle.getSimpleName());
                 startActivity(muscleDetailsActivity);
                 return true;
             }
@@ -48,36 +61,16 @@ public class MuscleGroupListActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        listDataHeader = new ArrayList<>();
-        listHashMap = new HashMap<>();
-        myDB = DBManager.getInstance(this);
-        myDB.open();
-        Cursor data = myDB.getData("MuscleGroup", null);
-        if (data.getCount() == 0) {
-            Toast.makeText(this, "The Database is empty!", Toast.LENGTH_SHORT).show();
-        } else {
-            while (data.moveToNext()) {
-                listDataHeader.add(data.getString(1));
-            }
+        muscleGroupName = muscleGroupDAO.listMuscleGroups();
+        muscleGroupMuscleHashMap = new HashMap<>();
+
+        List<Muscle> muscles;
+
+        for (MuscleGroup singleGroup: muscleGroupName) {
+            // here we have a list of muscles
+            muscles = muscleDAO.getMuscleByMuscleGroupId(singleGroup.getId());
+            // to each muscle group there are muscles assigned
+            muscleGroupMuscleHashMap.put(singleGroup, muscles);
         }
-        data.close();
-
-        List<String> itemsGroup;
-        for (int i = 0; i < listDataHeader.size(); i++) {
-            data = myDB.getData("Muscle", " JOIN MuscleGroup ON Muscle.muscle_group " +
-                    "= MuscleGroup.id WHERE MuscleGroup.name = '" + listDataHeader.get(i) + "'");
-            itemsGroup = new ArrayList<>();
-
-            if (data.getCount() == 0) {
-                Toast.makeText(this, "The Database is empty!", Toast.LENGTH_SHORT).show();
-            } else {
-                while (data.moveToNext()) {
-                    itemsGroup.add(data.getString(4));
-
-                }
-            }
-            listHashMap.put(listDataHeader.get(i), itemsGroup);
-        }
-        data.close();
     }
 }

@@ -34,7 +34,7 @@ public class BodyConditionCalculator {
 
     public static double calculateBFP(double waist, double neck, double hip, double height, String gender) {
         double denominator;
-        if (gender.equals("Male")) {
+        if (gender.equals("M")) {
             denominator = 1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height);
         } else {
             denominator = 1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.221 * Math.log10(height);

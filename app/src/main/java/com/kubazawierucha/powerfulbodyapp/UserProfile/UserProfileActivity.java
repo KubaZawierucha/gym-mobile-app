@@ -2,7 +2,6 @@ package com.kubazawierucha.powerfulbodyapp.UserProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,8 +12,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kubazawierucha.powerfulbodyapp.DbManagement.DBManager;
+import com.kubazawierucha.powerfulbodyapp.DAO.UserDAO;
 import com.kubazawierucha.powerfulbodyapp.R;
+import com.kubazawierucha.powerfulbodyapp.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,8 @@ import java.util.Locale;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    private DBManager myDB;
+    private UserDAO userDAO;
+    private User user;
 
     private EditText bmiET;
     private EditText bfpET;
@@ -34,14 +35,6 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView bfpTV;
     private List<EditText> editTexts;
 
-    private String name;
-    private int age = 0;
-    private String gender = "Male";
-    private double height = 0;
-    private double weight = 0;
-    private double waist = 0;
-    private double neck = 0;
-    private double hip = 0;
     private double BMI = 0;
     private double BFP = 0;
     private BMIClassifier bmiClassifier;
@@ -49,12 +42,12 @@ public class UserProfileActivity extends AppCompatActivity {
     private Button submitBtn;
     private Button editBtn;
 
-    private final int USER_CREATED_BY_APP_FLAG = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        userDAO = new UserDAO(this);
 
         editTexts = new ArrayList<>();
         editTexts.add((EditText) findViewById(R.id.user_name_edit_view));
@@ -78,7 +71,6 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateInput()){
-                    setGender();
                     setCalculatedEditTexts();
                     switchBodyCalculationTexts(1);
                     setEditTextsDisabled(editTexts);
@@ -97,62 +89,64 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
-        myDB = DBManager.getInstance(this);
-
         initData();
     }
 
     private void initData() {
-        myDB.open();
-        Cursor data = myDB.getData("User", " WHERE createdByApp = " + (USER_CREATED_BY_APP_FLAG));
+        // load user from db
+        user = userDAO.getUserCreatedByApp();
 
-        if (isUserInDB(data)) {
-            loadUserFromDB(data);
-            loadValuesFromEditTexts();
+        // if user exists
+        if (user != null) {
+            prepareEditFields(user);
+            setCalculatedEditTextsValues();
+            setGender();
             setEditTextsDisabled(editTexts);
             setCalculatedEditTexts();
             switchBodyCalculationTexts(1);
             submitBtn.setVisibility(View.GONE);
             editBtn.setVisibility(View.VISIBLE);
         } else {
+            user = new User(true);
             createNewUser();
         }
-        data.close();
     }
 
-    private boolean isUserInDB(Cursor data) {
-        return data.getCount() != 0;
+    // we set texts of user's body values
+    private void setCalculatedEditTextsValues() {
+        BMI = BodyConditionCalculator.calculateBMI(user.getHeight() / 100, user.getWeight());
+        bmiClassifier = BodyConditionCalculator.classifyBMI(BMI);
+        BFP = BodyConditionCalculator.calculateBFP(user.getWaist(), user.getNeck(), user.getHip(), user.getHeight(), user.getGender());
     }
 
-    private void loadUserFromDB(Cursor data) {
-        data.moveToNext();
-        for (int i = 0, j = 0; i < editTexts.size(); i++, j++) {
-            if (j == 2) {
-                j++;
-            }
-            editTexts.get(i).setText(data.getString(j));
-        }
-        if (data.getString(2).equals("M")) {
+    // we set texts as user's profile
+    private void prepareEditFields(User user) {
+        editTexts.get(0).setText(user.getName());
+        editTexts.get(1).setText(String.format(Locale.US, "%d", user.getAge()));
+        editTexts.get(2).setText(String.format(Locale.US, "%.2f", user.getHeight()));
+        editTexts.get(3).setText(String.format(Locale.US, "%.2f", user.getWeight()));
+        editTexts.get(4).setText(String.format(Locale.US, "%.2f", user.getWaist()));
+        editTexts.get(5).setText(String.format(Locale.US, "%.2f", user.getNeck()));
+        editTexts.get(6).setText(String.format(Locale.US, "%.2f", user.getHip()));
+
+        if (user.getGender().equals("M")) {
             genderRG.check(R.id.male_radio_button);
-            gender = "Male";
         } else {
             genderRG.check(R.id.female_radio_button);
-            gender = "Female";
         }
     }
 
     private void loadValuesFromEditTexts() {
-        name = editTexts.get(0).getText().toString();
-        age = Integer.parseInt(editTexts.get(1).getText().toString());
-        height = Double.parseDouble(editTexts.get(2).getText().toString())/100;
-        weight = Double.parseDouble(editTexts.get(3).getText().toString());
-        waist = Double.parseDouble(editTexts.get(4).getText().toString());
-        neck = Double.parseDouble(editTexts.get(5).getText().toString());
-        hip = Double.parseDouble(editTexts.get(6).getText().toString());
+        user.setName(editTexts.get(0).getText().toString());
+        user.setAge(Integer.parseInt(editTexts.get(1).getText().toString()));
+        user.setHeight(Double.parseDouble(editTexts.get(2).getText().toString()));
+        user.setWeight(Double.parseDouble(editTexts.get(3).getText().toString()));
+        user.setWaist(Double.parseDouble(editTexts.get(4).getText().toString()));
+        user.setNeck(Double.parseDouble(editTexts.get(5).getText().toString()));
+        user.setHip(Double.parseDouble(editTexts.get(6).getText().toString()));
+        setGender();
 
-        BMI = BodyConditionCalculator.calculateBMI(height, weight);
-        bmiClassifier = BodyConditionCalculator.classifyBMI(BMI);
-        BFP = BodyConditionCalculator.calculateBFP(waist, neck, hip, height*100, gender);
+        setCalculatedEditTextsValues();
     }
 
     private void setCalculatedEditTexts() {
@@ -188,7 +182,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void hideGenderRadioButton() {
-        if (gender.equals("Male")) {
+        if (user.getGender().equals("M")) {
             findViewById(R.id.female_radio_button).setVisibility(View.GONE);
         } else {
             findViewById(R.id.male_radio_button).setVisibility(View.GONE);
@@ -235,27 +229,27 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private boolean isDataOk() {
-        if (age <= 0 || age >= 120) {
+        if (user.getAge() <= 0 || user.getAge() >= 120) {
             editTexts.get(1).setError("Age must be bigger than 0 and lower than 120!");
             editTexts.get(1).requestFocus();
             return false;
-        } else if (height <= 0 || height >= 300) {
+        } else if (user.getHeight() <= 0 || user.getHeight() >= 300) {
             editTexts.get(2).setError("Height must be bigger than 0 and lower than 300!");
             editTexts.get(2).requestFocus();
             return false;
-        } else if (weight <= 0 || weight >= 500) {
+        } else if (user.getWeight() <= 0 || user.getWeight() >= 500) {
             editTexts.get(3).setError("Weight must be bigger than 0 and lower than 500!");
             editTexts.get(3).requestFocus();
             return false;
-        } else if (waist <= 0 || waist >= 300) {
+        } else if (user.getWaist() <= 0 || user.getWaist() >= 300) {
             editTexts.get(4).setError("Waist must be bigger than 0 and lower than 300!");
             editTexts.get(4).requestFocus();
             return false;
-        } else if (neck <= 0 || neck >= 200) {
+        } else if (user.getNeck() <= 0 || user.getNeck() >= 200) {
             editTexts.get(5).setError("Neck must be bigger than 0 and lower than 200!");
             editTexts.get(5).requestFocus();
             return false;
-        } else if (hip <= 0 || hip >= 300){
+        } else if (user.getHip() <= 0 || user.getHip() >= 300){
             editTexts.get(6).setError("Hip must be bigger than 0 and lower than 300!");
             editTexts.get(6).requestFocus();
             return false;
@@ -267,12 +261,12 @@ public class UserProfileActivity extends AppCompatActivity {
     private void setGender() {
         switch (genderRG.getCheckedRadioButtonId()) {
             case R.id.male_radio_button:
-                gender = "Male";
+                user.setGender("M");
                 findViewById(R.id.female_radio_button).setVisibility(View.GONE);
                 break;
 
             case R.id.female_radio_button:
-                gender = "Female";
+                user.setGender("F");
                 findViewById(R.id.male_radio_button).setVisibility(View.GONE);
                 break;
         }
@@ -292,9 +286,12 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void saveUserToDB() {
-        myDB.deleteTable("User");
-        boolean result = myDB.insertData("User", "'" + name + "', " + age + ", '" + gender.substring(0,1) +
-                "', " + height*100 + ", " + weight + ", " + waist + ", " + neck + ", " + hip + ", " + USER_CREATED_BY_APP_FLAG + ")");
+        boolean result = userDAO.updateOrCreateUser(user, true);
+
+        if (!result) {
+            result = userDAO.updateOrCreateUser(user, false);
+        }
+
         if (result) {
             Toast.makeText(UserProfileActivity.this, "DB updated", Toast.LENGTH_SHORT).show();
         } else {

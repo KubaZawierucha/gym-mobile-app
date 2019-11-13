@@ -15,9 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.kubazawierucha.powerfulbodyapp.ExerciseGroupActivity;
+import com.kubazawierucha.powerfulbodyapp.Exercises.ExerciseGroupActivity;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.DownloadingActivity;
 
 public class BodyActivity extends AppCompatActivity implements View.OnTouchListener{
 
