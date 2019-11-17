@@ -52,7 +52,7 @@ public class MuscleGroupListActivity extends AppCompatActivity {
                 MuscleGroup muscleGroup = (MuscleGroup) listAdapter.getGroup(groupPosition);
                 muscleDetailsActivity.putExtra("parents", muscleGroup.getName());
                 Muscle muscle = (Muscle) listAdapter.getChild(groupPosition, childPosition);
-                muscleDetailsActivity.putExtra("children", muscle.getSimpleName());
+                muscleDetailsActivity.putExtra("muscleId", muscle.getId());
                 startActivity(muscleDetailsActivity);
                 return true;
             }

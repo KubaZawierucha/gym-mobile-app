@@ -8,8 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Workout.WorkoutListActivity"></activity>
+        android:theme="@style/MainAppTheme">
+        <activity android:name=".WorkoutDetailsActivity"></activity>
+        <activity android:name=".NewWorkoutActivity" />
+        <activity android:name=".Workout.WorkoutListActivity" />
         <activity android:name=".Exercises.ExerciseDetailsActivity" />
         <activity android:name=".Exercises.ExerciseGroupActivity" />
         <activity android:name=".UserProfile.UserProfileActivity" />
@@ -18,7 +20,8 @@
         <activity android:name=".DownloadingActivity" />
         <activity android:name=".MusclesActivities.MuscleDetailsActivity" />
         <activity android:name=".MusclesActivities.MuscleGroupListActivity" />
-        <activity android:name=".BodyActivity.BodyActivity" />
+        <activity android:name=".BodyActivity.BodyActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +30,9 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

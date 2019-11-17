@@ -58,7 +58,7 @@ public class MuscleGroupDAO {
     public MuscleGroup getMuscleGroupByName(String name) throws SQLException {
         MuscleGroup muscleGroup = null;
         connect();
-        Cursor cursor = db.rawQuery("SELECT * FROM MuscleGroup WHERE NAME = " + name, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM MuscleGroup WHERE NAME = '" + name + "'", null);
         if (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             muscleGroup = new MuscleGroup(id, name);

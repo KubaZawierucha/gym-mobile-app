@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MainAppTheme" parent="Theme.AppCompat">
+        <item name="android:windowBackground">@drawable/main_app_gradient</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -16,5 +20,24 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MainAppText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="TitleText" parent="MainAppText">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubTitleText" parent="TitleText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ContentText" parent="MainAppText">
+        <item name="android:textSize">15sp</item>
+    </style>
 
 </resources>

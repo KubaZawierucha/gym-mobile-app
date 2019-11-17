@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mainScreenAppName"
         android:text="Powerful Body App"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textSize="15pt" />
+
+        android:layout_marginTop="75dp"
+        android:textSize="15pt"
+        style="@style/TitleText"/>
 
     <Button
         android:id="@+id/go_to_body_activity_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="40dp"
         android:text="Exercises" />
 
     <Button
         android:id="@+id/go_to_muscle_group_list_activity_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/go_to_body_activity_button"
         android:layout_marginTop="20dp"
         android:text="Muscles" />
 
@@ -38,8 +40,6 @@
         android:id="@+id/go_to_user_activity_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/go_to_muscle_group_list_activity_btn"
         android:layout_marginTop="20dp"
         android:text="User" />
 
@@ -47,9 +47,9 @@
         android:id="@+id/go_to_workout_activity_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/go_to_user_activity_btn"
         android:layout_marginTop="20dp"
-        android:text="Workout" />
+        android:text="Workout"
+        android:layout_marginBottom="40dp"/>
 
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>

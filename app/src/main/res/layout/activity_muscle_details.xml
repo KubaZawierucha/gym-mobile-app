@@ -8,17 +8,38 @@
     tools:context=".MusclesActivities.MuscleDetailsActivity">
 
     <TextView
-        android:id="@+id/parents"
-        android:layout_width="wrap_content"
+        android:id="@+id/muscle_details_muscle_group_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parents"
+        android:text="Muscle Group"
         android:textSize="30sp"/>
 
     <TextView
-        android:id="@+id/children"
-        android:layout_width="wrap_content"
+        android:id="@+id/muscle_details_muscle_simple_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Children"
+        android:text="Simple Name"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/muscle_details_muscle_formal_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Formal Name"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/muscle_details_muscle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/muscle_details_muscle_description_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Placeholder"
         android:textSize="30sp"/>
 
 </LinearLayout>

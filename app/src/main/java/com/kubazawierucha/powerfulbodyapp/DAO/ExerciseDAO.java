@@ -1,5 +1,6 @@
 package com.kubazawierucha.powerfulbodyapp.DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -51,7 +52,7 @@ public class ExerciseDAO {
             String name = cursor.getString(1);
             String desc = cursor.getString(2);
             String muscle = cursor.getString(3);
-            double lastWeight = cursor.getDouble(4);
+            int lastWeight = cursor.getInt(4);
             int lastRepNum = cursor.getInt(5);
             int lastBreakTime = cursor.getInt(6);
             int lastSeriesNum = cursor.getInt(7);
@@ -76,7 +77,7 @@ public class ExerciseDAO {
             int id = cursor.getInt(0);
             String desc = cursor.getString(2);
             String muscle = cursor.getString(3);
-            double lastWeight = cursor.getDouble(4);
+            int lastWeight = cursor.getInt(4);
             int lastRepNum = cursor.getInt(5);
             int lastBreakTime = cursor.getInt(6);
             int lastSeriesNum = cursor.getInt(7);
@@ -88,5 +89,44 @@ public class ExerciseDAO {
         cursor.close();
         disconnect();
         return exercise;
+    }
+
+    public Exercise getExerciseById(int id) {
+        Exercise exercise = null;
+        connect();
+        Cursor cursor = db.rawQuery("SELECT e.id, e.name, e.desc, m.name, last_weight, " +
+                "last_rep_num, last_break_time, last_series_num, mg.name FROM Exercise e JOIN " +
+                "Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
+                "WHERE e.id = " + id, null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(1);
+            String desc = cursor.getString(2);
+            String muscle = cursor.getString(3);
+            int lastWeight = cursor.getInt(4);
+            int lastRepNum = cursor.getInt(5);
+            int lastBreakTime = cursor.getInt(6);
+            int lastSeriesNum = cursor.getInt(7);
+            String muscleGroup = cursor.getString(8);
+
+            exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime, lastSeriesNum, muscleGroup);
+        }
+
+        cursor.close();
+        disconnect();
+        return exercise;
+    }
+
+    public boolean updateExercise(Exercise exercise) {
+        connect();
+        ContentValues cv = new ContentValues();
+        cv.put("last_weight", exercise.getLastWeight());
+        cv.put("last_rep_num", exercise.getLastRepetitionsNumber());
+        cv.put("last_break_time", exercise.getLastBreakTime());
+        cv.put("last_series_num", exercise.getLastSeriesNumber());
+
+        boolean result = db.update("Exercise", cv, "id = ?", new String[]{Integer.toString(exercise.getId())}) != 0;
+
+        disconnect();
+        return result;
     }
 }

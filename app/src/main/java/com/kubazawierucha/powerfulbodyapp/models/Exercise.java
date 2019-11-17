@@ -6,13 +6,13 @@ public class Exercise {
     private String name;
     private String description;
     private String muscleName;
-    private double lastWeight;
+    private int lastWeight;
     private int lastRepetitionsNumber;
     private int lastBreakTime;
     private int lastSeriesNumber;
     private String muscleGroupName;
 
-    public Exercise(String name, String description, String muscleName, double lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
+    public Exercise(String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
         this.name = name;
         this.description = description;
         this.muscleName = muscleName;
@@ -23,7 +23,7 @@ public class Exercise {
         this.muscleGroupName = muscleGroupName;
     }
 
-    public Exercise(int id, String name, String description, String muscleName, double lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
+    public Exercise(int id, String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
         this(name, description, muscleName, lastWeight, lastRepetitionsNumber, lastBreakTime, lastSeriesNumber, muscleGroupName);
         this.id = id;
     }
@@ -64,11 +64,11 @@ public class Exercise {
         this.muscleName = muscleName;
     }
 
-    public double getLastWeight() {
+    public int getLastWeight() {
         return lastWeight;
     }
 
-    public void setLastWeight(double lastWeight) {
+    public void setLastWeight(int lastWeight) {
         this.lastWeight = lastWeight;
     }
 

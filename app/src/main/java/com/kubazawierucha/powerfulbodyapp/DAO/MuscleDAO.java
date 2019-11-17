@@ -59,4 +59,38 @@ public class MuscleDAO {
         disconnect();
         return list;
     }
+
+    public Muscle getMuscleById(int id) throws SQLException {
+        Muscle muscle = null;
+        connect();
+        Cursor cursor = db.rawQuery("SELECT m.id, m.name, desc, simple_name, mg.name FROM Muscle m " +
+                "JOIN MuscleGroup mg ON m.muscle_group = mg.id WHERE m.id = " + id, null);
+        while (cursor.moveToNext()) {
+            String formalName = cursor.getString(1);
+            String simpleName = cursor.getString(3);
+            String description = cursor.getString(2);
+            String muscleGroupName = cursor.getString(4);
+            muscle = new Muscle(id, formalName, simpleName, description, muscleGroupName);
+        }
+        cursor.close();
+        disconnect();
+        return muscle;
+    }
+
+    public Muscle getMuscleByFormalName(String formalName) throws SQLException {
+        Muscle muscle = null;
+        connect();
+        Cursor cursor = db.rawQuery("SELECT m.id, m.name, desc, simple_name, mg.name FROM Muscle m " +
+                "JOIN MuscleGroup mg ON m.muscle_group = mg.id WHERE m.name = '" + formalName + "'", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String simpleName = cursor.getString(3);
+            String description = cursor.getString(2);
+            String muscleGroupName = cursor.getString(4);
+            muscle = new Muscle(id, formalName, simpleName, description, muscleGroupName);
+        }
+        cursor.close();
+        disconnect();
+        return muscle;
+    }
 }

@@ -5,19 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-    <TableRow>
+    <TableRow
+        android:layout_margin="10dp">
         <TextView
             android:id="@+id/exercise_name_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="TextView"
+            style="@style/ContentText"
+            android:textAlignment="center"/>
 
         <ImageView
             android:id="@+id/exercise_image_view"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/body_screen_front_mask" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/placeholder_image_1"
+            android:background="#FFFFFF" />
     </TableRow>
 </TableLayout>

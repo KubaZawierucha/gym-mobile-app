@@ -14,7 +14,7 @@
             android:id="@+id/detailed_exercise_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            style="@style/TitleText"
             android:text="Default name"
             android:layout_centerHorizontal="true"
             />
@@ -22,19 +22,214 @@
             android:id="@+id/detailed_muscle_group_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            style="@style/SubTitleText"
+            android:textSize="30dp"
             android:text="Default group"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/detailed_exercise_name_text_view"
+            android:layout_marginTop="20dp"
             />
         <TextView
+            android:id="@+id/main_muscle_formal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            style="@style/ContentText"
+            android:layout_below="@id/detailed_muscle_group_text_view"
+            android:text="Placeholder"/>
+        <TextView
+            android:layout_centerHorizontal="true"
             android:id="@+id/detailed_muscle_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            style="@style/SubTitleText"
             android:text="Main muscle:"
-            android:layout_below="@id/detailed_muscle_group_text_view"
+            android:layout_below="@id/main_muscle_formal_name"
+            android:layout_marginTop="20dp"
             />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/main_muscle_simple_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ContentText"
+            android:layout_below="@+id/detailed_muscle_name_text_view"
+            android:text="Placeholder"/>
+
+        <TextView
+            android:id="@+id/exercise_description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubTitleText"
+            android:layout_centerHorizontal="true"
+            android:text="Description"
+            android:layout_below="@+id/main_muscle_simple_name"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            style="@style/ContentText"
+            android:id="@+id/exercise_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Placeholder"
+            android:layout_below="@id/exercise_description_text_view"/>
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/exercise_image_view_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/exercise_description"
+            android:src="@drawable/placeholder_image_1"
+            android:background="#FFFFFF"/>
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/exercise_image_view_2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/exercise_image_view_1"
+            android:src="@drawable/placeholder_image_2"
+            android:background="#FFFFFF"/>
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/exercise_image_view_3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/exercise_image_view_2"
+            android:src="@drawable/placeholder_image_3"
+            android:background="#FFFFFF"/>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/last_training_specification_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_image_view_3"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/last_training_specification_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/SubTitleText"
+                android:text="Last Training Specification:" />
+            <Button
+                android:id="@+id/modify_specification_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MODIFY"/>
+            <Button
+                android:id="@+id/save_specification_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/weight_row"
+            android:layout_below="@id/last_training_specification_row">
+            <TextView
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight:"/>
+            <TextView
+                style="@style/ContentText"
+                android:id="@+id/weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"/>
+            <EditText
+                style="@style/ContentText"
+                android:id="@+id/last_weight_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:visibility="gone"
+                android:inputType="number"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/series_row"
+            android:layout_below="@id/weight_row">
+            <TextView
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Series:"/>
+            <TextView
+                style="@style/ContentText"
+                android:id="@+id/series_num_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"/>
+            <EditText
+                style="@style/ContentText"
+                android:id="@+id/last_series_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:visibility="gone"
+                android:inputType="number"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/repetitions_row"
+            android:layout_below="@id/series_row">
+            <TextView
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repetitions:"/>
+            <TextView
+                style="@style/ContentText"
+                android:id="@+id/repetitions_num_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"/>
+            <EditText
+                style="@style/ContentText"
+                android:id="@+id/last_rep_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:visibility="gone"
+                android:inputType="number"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/break_row"
+            android:layout_below="@id/repetitions_row">
+            <TextView
+                style="@style/ContentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Break Time:"/>
+            <TextView
+                style="@style/ContentText"
+                android:id="@+id/break_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"/>
+            <EditText
+                style="@style/ContentText"
+                android:id="@+id/last_break_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:inputType="number"
+                />
+        </TableRow>
+
+
+
 
     </RelativeLayout>
 

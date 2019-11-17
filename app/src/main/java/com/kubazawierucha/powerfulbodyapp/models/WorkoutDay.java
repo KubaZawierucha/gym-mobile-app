@@ -9,6 +9,10 @@ public class WorkoutDay {
     private String muscleGroupName;
     private List<String> exercisesNames;
 
+    public WorkoutDay(String date) {
+        this.date = date;
+    }
+
     public WorkoutDay(String date, String muscleGroupName, List<String> exercisesNames) {
         this.date = date;
         this.muscleGroupName = muscleGroupName;

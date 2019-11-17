@@ -174,7 +174,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private void setEditTextsDisabled(List<EditText> et) {
         for (EditText single: et) {
             single.setEnabled(false);
-            single.setTextColor(Color.BLACK);
+            single.setTextColor(Color.WHITE);
             hideGenderRadioButton();
             submitBtn.setVisibility(View.GONE);
             editBtn.setVisibility(View.VISIBLE);

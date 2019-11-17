@@ -36,7 +36,12 @@ public class WorkoutList extends ArrayAdapter {
         TextView txtDate = rowView.findViewById(R.id.workout_date_text_view);
         TextView txtMuscleGroup = rowView.findViewById(R.id.workout_muscle_group_text_view);
         txtDate.setText(workoutDays.get(position).getDate());
-        txtMuscleGroup.setText(workoutDays.get(position).getMuscleGroupName());
+        txtMuscleGroup.setText(workoutDays.get(position).getExercisesNames().get(0));
+        if (workoutDays.get(position).getExercisesNames().size() > 1) {
+            TextView threeDots = rowView.findViewById(R.id.workout_list_dots);
+            threeDots.setText("...");
+            threeDots.setVisibility(View.VISIBLE);
+        }
         return rowView;
     }
 }

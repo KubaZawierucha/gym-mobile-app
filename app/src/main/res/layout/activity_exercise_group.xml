@@ -9,9 +9,11 @@
     <TextView
         android:id="@+id/muscle_group_of_exercises"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/TitleText" />
 
     <ListView
+        android:layout_marginTop="20dp"
         android:id="@+id/exercises_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

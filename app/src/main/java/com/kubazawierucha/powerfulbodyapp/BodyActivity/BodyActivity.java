@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body);
 
-        final Button reverseButton = findViewById(R.id.rev_button);
+        final ImageButton reverseButton = findViewById(R.id.rev_button);
         final ImageView imageView = findViewById(R.id.body_front_img);
         final ImageView imageViewMask = findViewById(R.id.body_front_img_mask);
 

@@ -1,12 +1,16 @@
 package com.kubazawierucha.powerfulbodyapp.DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DatabaseOpenHelper;
+import com.kubazawierucha.powerfulbodyapp.NewWorkoutActivity;
+import com.kubazawierucha.powerfulbodyapp.models.Exercise;
 import com.kubazawierucha.powerfulbodyapp.models.WorkoutDay;
 
 import java.util.ArrayList;
@@ -64,5 +68,73 @@ public class WorkoutDAO {
         disconnect();
 
         return list;
+    }
+
+    public boolean insertExercisesIntoWorkoutExercise(List<Integer> listOfExercises, int day_id) throws SQLException {
+        boolean result = false;
+        connect();
+        for (int singleExerciseId: listOfExercises) {
+            ContentValues cv = new ContentValues();
+            cv.put("exercise_id", singleExerciseId);
+            cv.put("workout_day_id", day_id);
+            result = db.insert("WorkoutExercise", null, cv) != 0;
+        }
+        disconnect();
+
+        return result;
+    }
+
+    public boolean insertNewWorkoutDay(String date, int muscleGroupId) throws SQLException {
+        boolean result;
+        //ExerciseDAO exerciseDAO = new ExerciseDAO();
+        connect();
+        ContentValues cv = new ContentValues();
+        cv.put("date", date);
+        cv.put("muscle_group", muscleGroupId);
+        result = db.insert("WorkoutDay", null, cv) != 0;
+
+        disconnect();
+        return result;
+    }
+
+    public int getWorkoutDayIdByDate(String date) throws SQLException {
+        int id = -1;
+        connect();
+        Cursor data = db.rawQuery("SELECT id FROM WorkoutDay WHERE date = '" + date + "'", null);
+        while (data.moveToNext()) {
+            id = data.getInt(0);
+        }
+        data.close();
+        disconnect();
+
+        return id;
+    }
+
+    public WorkoutDay getWorkoutById(int id) throws SQLException {
+        WorkoutDay workoutDay = null;
+        connect();
+        Cursor data = db.rawQuery("SELECT * FROM WorkoutDay WHERE id = " + id, null);
+        while (data.moveToNext()) {
+            String date = data.getString(1);
+            int muscleGroup = data.getInt(2);
+            workoutDay = new WorkoutDay(date);
+        }
+        data.close();
+        disconnect();
+        return workoutDay;
+    }
+
+    public List<Integer> getAllExercisesIdByWorkoutDayId(int workoutDayId) throws SQLException {
+        List<Integer> ids = new ArrayList<>();
+        connect();
+        Cursor data = db.rawQuery("SELECT exercise_id FROM WorkoutExercise WHERE workout_day_id = " + workoutDayId, null);
+        while (data.moveToNext()) {
+            int id = data.getInt(0);
+            ids.add(id);
+        }
+        data.close();
+        disconnect();
+
+        return ids;
     }
 }

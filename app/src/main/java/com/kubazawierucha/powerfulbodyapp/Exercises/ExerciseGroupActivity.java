@@ -69,7 +69,7 @@ public class ExerciseGroupActivity extends AppCompatActivity {
 
         for (Exercise exercise: exercises) {
              //names.add(exercise.getName());
-            images.add(R.drawable.body_screen_front);
+            images.add(R.drawable.placeholder_image_1);
         }
     }
 }

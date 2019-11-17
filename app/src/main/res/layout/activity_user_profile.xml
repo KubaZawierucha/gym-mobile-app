@@ -23,59 +23,65 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="175dp"
+                android:layout_width="150dp"
                 android:layout_height="200dp"
-                android:background="#00000000"
-                android:padding="1dp"
-                app:srcCompat="@drawable/body_screen_front_mask" />
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                app:srcCompat="@drawable/placeholder_image_1" />
 
             <LinearLayout
+                android:layout_marginStart="5dp"
                 android:id="@+id/basic_info_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/SubTitleText"
                     android:id="@+id/user_name_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Name:"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart"/>
 
                 <EditText
+                    style="@style/ContentText"
                     android:id="@+id/user_name_edit_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textSize="16sp"
                     android:layout_marginBottom="5dp"
                     android:hint="Name"
                     android:maxLength="30"/>
 
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:id="@+id/user_age_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Age:"
-                    android:textSize="16sp" />
+                    style="@style/SubTitleText"
+                    android:textAlignment="textStart"/>
 
                 <EditText
+                    style="@style/ContentText"
                     android:id="@+id/user_age_edit_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="numberSigned"
-                    android:textSize="16sp"
                     android:layout_marginBottom="5dp"
                     android:hint="Age"/>
 
                 <TextView
+                    android:layout_marginTop="10dp"
+                    style="@style/SubTitleText"
+                    android:textAlignment="textStart"
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Gender:"
-                    android:textSize="16sp" />
+                    android:text="Gender:"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,6 +90,7 @@
                     android:layout_marginBottom="5dp">
 
                     <RadioGroup
+                        style="@style/ContentText"
                         android:id="@+id/sex_radio_group"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -94,15 +101,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Male"
-                            android:checked="true"
-                            android:textSize="16sp" />
+                            android:checked="true" />
 
                         <RadioButton
                             android:id="@+id/female_radio_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Female"
-                            android:textSize="16sp" />
+                            android:text="Female" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -111,28 +116,33 @@
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="10dp"
+            style="@style/SubTitleText"
+            android:textAlignment="textStart"
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Height [cm]:"
-            android:textSize="16sp" />
+            android:text="Height [cm]:"/>
 
         <EditText
+            style="@style/ContentText"
             android:id="@+id/height_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:ems="10"
             android:inputType="numberSigned"
-            android:textSize="16sp"
             android:hint="Height"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            style="@style/SubTitleText"
+            android:textAlignment="textStart"
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Weight [kg]:"
-            android:textSize="16sp" />
+            />
 
         <EditText
             android:id="@+id/weight_edit_text"
@@ -140,36 +150,39 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:ems="10"
+            style="@style/ContentText"
             android:inputType="numberSigned"
-            android:textSize="16sp"
             android:hint="Weight"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            style="@style/SubTitleText"
+            android:textAlignment="textStart"
             android:id="@+id/bmi_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BMI:"
-            android:textSize="16sp"
+            android:text="Body Mass Index (BMI):"
             android:visibility="gone"/>
 
         <EditText
             android:id="@+id/bmi_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:ems="10"
             android:layout_marginBottom="5dp"
             android:hint="BMI result"
             android:enabled="false"
-            android:textColor="#000000"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            style="@style/ContentText"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart"
+            style="@style/SubTitleText"
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Waist circumference [cm]:"
-            android:textSize="16sp" />
+            android:text="Waist Circumference [cm]:" />
 
         <EditText
             android:id="@+id/waist_edit_text"
@@ -178,15 +191,18 @@
             android:layout_marginBottom="5dp"
             android:ems="10"
             android:inputType="numberSigned"
-            android:textSize="16sp"
-            android:hint="Waist"/>
+            android:hint="Waist"
+            style="@style/ContentText"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            style="@style/SubTitleText"
+            android:textAlignment="textStart"
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Neck circumference [cm]:"
-            android:textSize="16sp" />
+            android:text="Neck Circumference [cm]:"
+            />
 
         <EditText
             android:id="@+id/neck_edit_text"
@@ -195,15 +211,18 @@
             android:layout_marginBottom="5dp"
             android:ems="10"
             android:inputType="numberSigned"
-            android:textSize="16sp"
-            android:hint="Neck"/>
+            android:hint="Neck"
+            style="@style/ContentText"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart"
+            style="@style/SubTitleText"
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hip circumference [cm]:"
-            android:textSize="16sp" />
+            android:text="Hip Circumference [cm]:"
+            />
 
         <EditText
             android:id="@+id/hip_edit_text"
@@ -212,15 +231,17 @@
             android:layout_marginBottom="5dp"
             android:ems="10"
             android:inputType="numberSigned"
-            android:textSize="16sp"
-            android:hint="Hip"/>
+            android:hint="Hip"
+            style="@style/ContentText"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            style="@style/SubTitleText"
+            android:textAlignment="textStart"
             android:id="@+id/bfp_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Body fat percentage:"
-            android:textSize="16sp"
+            android:text="Body Fat Percentage (BFP):"
             android:layout_marginBottom="5dp"
             android:visibility="gone"/>
 
@@ -228,13 +249,12 @@
             android:id="@+id/bfp_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:layout_marginBottom="5dp"
             android:ems="10"
             android:hint="BFP result"
             android:enabled="false"
-            android:textColor="#000000"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            style="@style/ContentText"/>
 
         <LinearLayout
             android:layout_width="match_parent"
