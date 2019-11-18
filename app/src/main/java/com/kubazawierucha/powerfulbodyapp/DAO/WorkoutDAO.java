@@ -137,4 +137,13 @@ public class WorkoutDAO {
 
         return ids;
     }
+
+    public boolean deleteWorkoutDayById(int id) {
+        boolean result;
+        connect();
+        db.delete("WorkoutExercise", "workout_day_id = " + id, null);
+        result = db.delete("WorkoutDay", "id = " + id, null) > 0;
+        disconnect();
+        return result;
+    }
 }

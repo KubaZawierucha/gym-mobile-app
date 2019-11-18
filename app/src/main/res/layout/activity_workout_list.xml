@@ -20,12 +20,12 @@
         android:textAlignment="center"
         android:layout_below="@+id/add_new_workout_btn"
         android:text="WORKOUT PLAN:"
-        android:textSize="20sp"
-        android:textColor="#000000"
+        style="@style/TitleText"
         android:layout_marginTop="30dp"/>
 
     <ListView
         android:layout_marginTop="5dp"
+        android:focusable="true"
         android:id="@+id/workout_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
