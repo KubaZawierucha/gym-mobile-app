@@ -71,13 +71,13 @@ gradlew.bat
 settings.gradle
 
 app/src/main/res/drawable-v24/exercise_spinner_item_background.png
-        app/src/main/res/drawable/body_screen_front.jpg
-        app/src/main/res/drawable/body_screen_front_mask.jpg
-        app/src/main/res/drawable/body_screen_reverse.png
-        app/src/main/res/drawable/body_screen_reverse_mask.png
-        app/src/main/res/drawable/icon_rotate.png
-        app/src/main/res/drawable/main_app_gradient.xml
-        app/src/main/res/drawable/placeholder_image_1.png
-        app/src/main/res/drawable/placeholder_image_2.png
-        app/src/main/res/drawable/placeholder_image_3.png
+app/src/main/res/drawable/body_screen_front.jpg
+app/src/main/res/drawable/body_screen_front_mask.jpg
+app/src/main/res/drawable/body_screen_reverse.png
+app/src/main/res/drawable/body_screen_reverse_mask.png
+app/src/main/res/drawable/icon_rotate.png
+app/src/main/res/drawable/main_app_gradient.xml
+app/src/main/res/drawable/placeholder_image_1.png
+app/src/main/res/drawable/placeholder_image_2.png
+app/src/main/res/drawable/placeholder_image_3.png
 
