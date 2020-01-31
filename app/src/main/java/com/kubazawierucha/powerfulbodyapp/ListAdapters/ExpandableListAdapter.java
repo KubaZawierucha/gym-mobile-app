@@ -9,8 +9,8 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.models.Muscle;
-import com.kubazawierucha.powerfulbodyapp.models.MuscleGroup;
+import com.kubazawierucha.powerfulbodyapp.Models.Muscle;
+import com.kubazawierucha.powerfulbodyapp.Models.MuscleGroup;
 
 import java.util.HashMap;
 import java.util.List;

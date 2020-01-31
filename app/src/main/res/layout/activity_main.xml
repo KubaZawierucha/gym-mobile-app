@@ -17,39 +17,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/mainScreenAppName"
         android:text="Powerful Body App"
-
         android:layout_marginTop="75dp"
-        android:textSize="15pt"
         style="@style/TitleText"/>
 
-    <Button
-        android:id="@+id/go_to_body_activity_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Exercises" />
+
+        <Button
+            android:id="@+id/go_to_body_activity_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Exercises" />
+
+        <Button
+            android:id="@+id/go_to_workout_activity_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Workout" />
+
+
+        <Button
+            android:id="@+id/go_to_user_activity_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="User" />
+
 
     <Button
         android:id="@+id/go_to_muscle_group_list_activity_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:text="Muscles" />
 
-    <Button
-        android:id="@+id/go_to_user_activity_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="User" />
-
-    <Button
-        android:id="@+id/go_to_workout_activity_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Workout"
-        android:layout_marginBottom="40dp"/>
 
     </LinearLayout>
 </ScrollView>

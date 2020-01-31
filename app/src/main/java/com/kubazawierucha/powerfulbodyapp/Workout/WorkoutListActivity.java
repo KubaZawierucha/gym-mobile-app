@@ -4,24 +4,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.WorkoutDAO;
-import com.kubazawierucha.powerfulbodyapp.DbManagement.DBManager;
-import com.kubazawierucha.powerfulbodyapp.Exercises.ExerciseDetailsActivity;
-import com.kubazawierucha.powerfulbodyapp.NewWorkoutActivity;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.WorkoutDetailsActivity;
-import com.kubazawierucha.powerfulbodyapp.models.WorkoutDay;
+import com.kubazawierucha.powerfulbodyapp.Models.WorkoutDay;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,9 +22,6 @@ public class WorkoutListActivity extends AppCompatActivity {
     private WorkoutDAO workoutDAO;
     private List<WorkoutDay> workoutDays;
 
-    private Button addNewTrainingBtn;
-    private ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +29,7 @@ public class WorkoutListActivity extends AppCompatActivity {
 
         workoutDAO = new WorkoutDAO(this);
 
-        addNewTrainingBtn = findViewById(R.id.add_new_workout_btn);
+        Button addNewTrainingBtn = findViewById(R.id.add_new_workout_btn);
         addNewTrainingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +38,7 @@ public class WorkoutListActivity extends AppCompatActivity {
             }
         });
 
-        listView = findViewById(R.id.workout_list_view);
+        ListView listView = findViewById(R.id.workout_list_view);
 
         initData();
 

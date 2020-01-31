@@ -1,4 +1,4 @@
-package com.kubazawierucha.powerfulbodyapp.models;
+package com.kubazawierucha.powerfulbodyapp.Models;
 
 public class User {
 

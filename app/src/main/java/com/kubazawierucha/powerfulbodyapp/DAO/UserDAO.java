@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DatabaseOpenHelper;
-import com.kubazawierucha.powerfulbodyapp.models.User;
+import com.kubazawierucha.powerfulbodyapp.Models.User;
 
 public class UserDAO {
 

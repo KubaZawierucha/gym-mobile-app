@@ -1,22 +1,22 @@
 package com.kubazawierucha.powerfulbodyapp.Exercises;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ListAdapter;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.ExerciseDAO;
-import com.kubazawierucha.powerfulbodyapp.DbManagement.DBManager;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.models.Exercise;
+import com.kubazawierucha.powerfulbodyapp.Models.Exercise;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +25,8 @@ public class ExerciseGroupActivity extends AppCompatActivity {
     private ExerciseDAO exerciseDAO;
     private List<Exercise> exercises;
 
-    //private DBManager myDB;
     private ListView listView;
-    //private List<String> names;
-    private List<Integer> images;
+    private List<Bitmap> images;
 
     String muscleGroupName;
 
@@ -63,13 +61,19 @@ public class ExerciseGroupActivity extends AppCompatActivity {
 
     private void initData() {
         exercises = exerciseDAO.getExercisesListByMuscleGroupName(muscleGroupName);
-
-        //names = new ArrayList<>();
         images = new ArrayList<>();
 
         for (Exercise exercise: exercises) {
-             //names.add(exercise.getName());
-            images.add(R.drawable.placeholder_image_1);
+            ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
+            File downloadDirectory = wrapper.getDir("images", MODE_PRIVATE);
+            String fileName = exercise.getName() + "_1";
+            File currFile = new File(downloadDirectory.getAbsolutePath() + "/" + fileName);
+
+            if (currFile.exists()) {
+                images.add(BitmapFactory.decodeFile(downloadDirectory.getAbsolutePath() + "/" + fileName));
+            } else {
+                images.add(BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.placeholder_image_1));
+            }
         }
     }
 }

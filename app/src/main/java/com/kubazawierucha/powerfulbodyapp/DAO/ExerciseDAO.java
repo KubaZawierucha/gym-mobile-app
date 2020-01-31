@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DatabaseOpenHelper;
-import com.kubazawierucha.powerfulbodyapp.models.Exercise;
+import com.kubazawierucha.powerfulbodyapp.Models.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,8 @@ public class ExerciseDAO {
         List<Exercise> list = new ArrayList<>();
         connect();
         Cursor cursor = db.rawQuery("SELECT e.id, e.name, e.desc, m.name, last_weight, " +
-                "last_rep_num, last_break_time, last_series_num, mg.name FROM Exercise e JOIN " +
-                "Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
+                "last_rep_num, last_break_time, last_series_num, mg.name, e.url_1, e.url_2, e.url_3 " +
+                "FROM Exercise e JOIN Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
                 "WHERE mg.name = '" + muscleGroupName + "'", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -56,8 +56,12 @@ public class ExerciseDAO {
             int lastRepNum = cursor.getInt(5);
             int lastBreakTime = cursor.getInt(6);
             int lastSeriesNum = cursor.getInt(7);
+            String fstPicUrl = cursor.getString(9);
+            String secPicUrl = cursor.getString(10);
+            String thdPicUrl = cursor.getString(11);
 
-            Exercise exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime, lastSeriesNum, muscleGroupName);
+            Exercise exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime,
+                    lastSeriesNum, muscleGroupName, fstPicUrl, secPicUrl, thdPicUrl);
             list.add(exercise);
         }
 
@@ -70,8 +74,8 @@ public class ExerciseDAO {
         Exercise exercise = null;
         connect();
         Cursor cursor = db.rawQuery("SELECT e.id, e.name, e.desc, m.name, last_weight, " +
-                "last_rep_num, last_break_time, last_series_num, mg.name FROM Exercise e JOIN " +
-                "Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
+                "last_rep_num, last_break_time, last_series_num, mg.name, e.url_1, e.url_2, e.url_3 " +
+                "FROM Exercise e JOIN Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
                 "WHERE e.name = '" + name + "'", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -82,8 +86,12 @@ public class ExerciseDAO {
             int lastBreakTime = cursor.getInt(6);
             int lastSeriesNum = cursor.getInt(7);
             String muscleGroup = cursor.getString(8);
+            String fstPicUrl = cursor.getString(9);
+            String secPicUrl = cursor.getString(10);
+            String thdPicUrl = cursor.getString(11);
 
-            exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime, lastSeriesNum, muscleGroup);
+            exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime,
+                    lastSeriesNum, muscleGroup, fstPicUrl, secPicUrl, thdPicUrl);
         }
 
         cursor.close();
@@ -95,8 +103,8 @@ public class ExerciseDAO {
         Exercise exercise = null;
         connect();
         Cursor cursor = db.rawQuery("SELECT e.id, e.name, e.desc, m.name, last_weight, " +
-                "last_rep_num, last_break_time, last_series_num, mg.name FROM Exercise e JOIN " +
-                "Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
+                "last_rep_num, last_break_time, last_series_num, mg.name, e.url_1, e.url_2, e.url_3 " +
+                "FROM Exercise e JOIN Muscle m ON e.muscle_id = m.id JOIN MuscleGroup mg ON mg.id = m.muscle_group " +
                 "WHERE e.id = " + id, null);
         while (cursor.moveToNext()) {
             String name = cursor.getString(1);
@@ -107,8 +115,12 @@ public class ExerciseDAO {
             int lastBreakTime = cursor.getInt(6);
             int lastSeriesNum = cursor.getInt(7);
             String muscleGroup = cursor.getString(8);
+            String fstPicUrl = cursor.getString(9);
+            String secPicUrl = cursor.getString(10);
+            String thdPicUrl = cursor.getString(11);
 
-            exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime, lastSeriesNum, muscleGroup);
+            exercise = new Exercise(id, name, desc, muscle, lastWeight, lastRepNum, lastBreakTime,
+                    lastSeriesNum, muscleGroup, fstPicUrl, secPicUrl, thdPicUrl);
         }
 
         cursor.close();

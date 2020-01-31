@@ -1,4 +1,4 @@
-package com.kubazawierucha.powerfulbodyapp.models;
+package com.kubazawierucha.powerfulbodyapp.Models;
 
 import java.util.List;
 
@@ -24,10 +24,6 @@ public class WorkoutDay {
         this.id = id;
     }
 
-    public WorkoutDay(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
     }
@@ -40,23 +36,7 @@ public class WorkoutDay {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getMuscleGroupName() {
-        return muscleGroupName;
-    }
-
-    public void setMuscleGroupName(String muscleGroupName) {
-        this.muscleGroupName = muscleGroupName;
-    }
-
     public List<String> getExercisesNames() {
         return exercisesNames;
-    }
-
-    public void setExercisesNames(List<String> exercisesNames) {
-        this.exercisesNames = exercisesNames;
     }
 }

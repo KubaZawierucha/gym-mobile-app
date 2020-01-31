@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DatabaseOpenHelper;
-import com.kubazawierucha.powerfulbodyapp.models.MuscleGroup;
+import com.kubazawierucha.powerfulbodyapp.Models.MuscleGroup;
 
 import java.util.ArrayList;
 import java.util.List;

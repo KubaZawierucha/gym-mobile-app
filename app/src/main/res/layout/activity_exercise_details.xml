@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/SubTitleText"
-            android:text="Main muscle:"
+            android:text="Main muscle"
             android:layout_below="@id/main_muscle_formal_name"
             android:layout_marginTop="20dp"
             />
@@ -70,36 +70,43 @@
             android:id="@+id/exercise_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:justificationMode="inter_word"
             android:text="Placeholder"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:layout_below="@id/exercise_description_text_view"/>
+
         <ImageView
-            android:layout_marginTop="20dp"
             android:id="@+id/exercise_image_view_1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
+            android:layout_width="800dp"
+            android:layout_height="200dp"
             android:layout_below="@id/exercise_description"
-            android:src="@drawable/placeholder_image_1"
-            android:background="#FFFFFF"/>
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="22dp"
+
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/placeholder_image_1" />
+
         <ImageView
             android:layout_marginTop="20dp"
             android:id="@+id/exercise_image_view_2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="800dp"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/exercise_image_view_1"
             android:src="@drawable/placeholder_image_2"
-            android:background="#FFFFFF"/>
+            />
+
         <ImageView
             android:layout_marginTop="20dp"
             android:id="@+id/exercise_image_view_3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="800dp"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/exercise_image_view_2"
             android:src="@drawable/placeholder_image_3"
-            android:background="#FFFFFF"/>
+            />
+
         <LinearLayout
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
@@ -113,71 +120,70 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 style="@style/SubTitleText"
-                android:text="Last Training Specification:" />
+                android:text="@string/last_training_specification" />
             <Button
                 android:id="@+id/modify_specification_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MODIFY"/>
+                android:text="@string/modify"/>
             <Button
                 android:id="@+id/save_specification_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SAVE"
+                android:text="@string/save"
                 android:visibility="gone"/>
         </LinearLayout>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/weight_row"
-            android:layout_below="@id/last_training_specification_row">
+            android:layout_below="@id/last_training_specification_row"
+            android:layout_centerHorizontal="true">
             <TextView
                 style="@style/ContentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight:"/>
+                android:text="@string/weight"/>
             <TextView
                 style="@style/ContentText"
                 android:id="@+id/weight_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
+                android:layout_height="wrap_content"/>
             <EditText
                 style="@style/ContentText"
                 android:id="@+id/last_weight_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:visibility="gone"
                 android:inputType="number"/>
         </TableRow>
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/series_row"
-            android:layout_below="@id/weight_row">
+            android:layout_below="@id/weight_row"
+            android:layout_centerHorizontal="true">
             <TextView
                 style="@style/ContentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Series:"/>
+                android:text="@string/series"/>
             <TextView
                 style="@style/ContentText"
                 android:id="@+id/series_num_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
+                android:layout_height="wrap_content"/>
             <EditText
                 style="@style/ContentText"
                 android:id="@+id/last_series_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:visibility="gone"
                 android:inputType="number"/>
         </TableRow>
         <TableRow
+            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/repetitions_row"
@@ -186,24 +192,23 @@
                 style="@style/ContentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Repetitions:"/>
+                android:text="@string/repetitions"/>
             <TextView
                 style="@style/ContentText"
                 android:id="@+id/repetitions_num_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
+                android:layout_height="wrap_content"/>
             <EditText
                 style="@style/ContentText"
                 android:id="@+id/last_rep_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:visibility="gone"
                 android:inputType="number"/>
         </TableRow>
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/break_row"
             android:layout_below="@id/repetitions_row">
@@ -211,13 +216,12 @@
                 style="@style/ContentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Break Time:"/>
+                android:text="@string/break_time"/>
             <TextView
                 style="@style/ContentText"
                 android:id="@+id/break_time_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
+                android:layout_height="wrap_content"/>
             <EditText
                 style="@style/ContentText"
                 android:id="@+id/last_break_edit_text"

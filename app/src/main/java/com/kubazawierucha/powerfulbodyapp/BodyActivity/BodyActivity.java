@@ -11,10 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.kubazawierucha.powerfulbodyapp.Exercises.ExerciseGroupActivity;
 import com.kubazawierucha.powerfulbodyapp.R;
@@ -75,41 +73,31 @@ public class BodyActivity extends AppCompatActivity implements View.OnTouchListe
 
                 if (ct.closeMatch(Color.RED, touchColor, tolerance)) {
                     muscleGroupToSend = "Chest";
-                    Toast.makeText(this, "Chest", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.BLUE, touchColor, tolerance)) {
                     muscleGroupToSend = "Front Arms";
-                    Toast.makeText(this, "Front Arms", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.YELLOW, touchColor, tolerance)) {
                     muscleGroupToSend = "Forearms";
-                    Toast.makeText(this, "Forearms", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(0, 204, 0), touchColor, tolerance)) {
                     muscleGroupToSend = "ABS";
-                    Toast.makeText(this, "ABS", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(102, 0, 153), touchColor, tolerance)) {
                     muscleGroupToSend = "Front Legs";
-                    Toast.makeText(this, "Front Legs", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(255, 102, 102), touchColor, tolerance)) {
                     muscleGroupToSend = "Back Arms";
-                    Toast.makeText(this, "Back Arms", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(153, 0, 0), touchColor, tolerance)) {
                     muscleGroupToSend = "Shoulders";
-                    Toast.makeText(this, "Shoulders", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(77, 77, 77), touchColor, tolerance)) {
                     muscleGroupToSend = "Back";
-                    Toast.makeText(this, "Back", Toast.LENGTH_SHORT).show();
                 }
                 else if (ct.closeMatch(Color.rgb(102, 51, 0), touchColor, tolerance)) {
                     muscleGroupToSend = "Back Legs";
-                    Toast.makeText(this, "Back Legs", Toast.LENGTH_SHORT).show();
                 }
-
                 handledHere = true;
 
                 if (muscleGroupToSend != null) {
@@ -120,8 +108,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 break;
         }
-
-
         return handledHere;
     }
 
@@ -143,6 +129,5 @@ public class BodyActivity extends AppCompatActivity implements View.OnTouchListe
 
             return bitmap.getPixel(x, y);
         }
-
     }
 }

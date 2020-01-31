@@ -1,4 +1,4 @@
-package com.kubazawierucha.powerfulbodyapp.models;
+package com.kubazawierucha.powerfulbodyapp.Models;
 
 public class Exercise {
 
@@ -11,8 +11,13 @@ public class Exercise {
     private int lastBreakTime;
     private int lastSeriesNumber;
     private String muscleGroupName;
+    private String fstPicURL;
+    private String secPicURL;
+    private String thdPicURL;
 
-    public Exercise(String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
+    public Exercise(String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber,
+                    int lastBreakTime, int lastSeriesNumber, String muscleGroupName, String fstPicURL,
+                    String secPicURL, String thdPicURL) {
         this.name = name;
         this.description = description;
         this.muscleName = muscleName;
@@ -21,10 +26,16 @@ public class Exercise {
         this.lastBreakTime = lastBreakTime;
         this.lastSeriesNumber = lastSeriesNumber;
         this.muscleGroupName = muscleGroupName;
+        this.fstPicURL = fstPicURL;
+        this.secPicURL = secPicURL;
+        this.thdPicURL = thdPicURL;
     }
 
-    public Exercise(int id, String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber, int lastBreakTime, int lastSeriesNumber, String muscleGroupName) {
-        this(name, description, muscleName, lastWeight, lastRepetitionsNumber, lastBreakTime, lastSeriesNumber, muscleGroupName);
+    public Exercise(int id, String name, String description, String muscleName, int lastWeight, int lastRepetitionsNumber,
+                    int lastBreakTime, int lastSeriesNumber, String muscleGroupName, String fstPicURL,
+                    String secPicURL, String thdPicURL) {
+        this(name, description, muscleName, lastWeight, lastRepetitionsNumber, lastBreakTime, lastSeriesNumber, muscleGroupName,
+                fstPicURL, secPicURL, thdPicURL);
         this.id = id;
     }
 
@@ -102,5 +113,29 @@ public class Exercise {
 
     public void setMuscleGroupName(String muscleGroupName) {
         this.muscleGroupName = muscleGroupName;
+    }
+
+    public String getFstPicURL() {
+        return fstPicURL;
+    }
+
+    public void setFstPicURL(String fstPicURL) {
+        this.fstPicURL = fstPicURL;
+    }
+
+    public String getSecPicURL() {
+        return secPicURL;
+    }
+
+    public void setSecPicURL(String secPicURL) {
+        this.secPicURL = secPicURL;
+    }
+
+    public String getThdPicURL() {
+        return thdPicURL;
+    }
+
+    public void setThdPicURL(String thdPicURL) {
+        this.thdPicURL = thdPicURL;
     }
 }

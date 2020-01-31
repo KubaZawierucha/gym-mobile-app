@@ -5,13 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.kubazawierucha.powerfulbodyapp.DbManagement.DatabaseOpenHelper;
-import com.kubazawierucha.powerfulbodyapp.NewWorkoutActivity;
-import com.kubazawierucha.powerfulbodyapp.models.Exercise;
-import com.kubazawierucha.powerfulbodyapp.models.WorkoutDay;
+import com.kubazawierucha.powerfulbodyapp.Models.WorkoutDay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +17,12 @@ public class WorkoutDAO {
 
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
-    //private DBManager dbManager;
 
     public WorkoutDAO(Context context) {
-        //this.dbManager = new DBManager(context);
         this.openHelper = new DatabaseOpenHelper(context);
     }
 
-    public void connect() {
+    private void connect() {
         try {
             this.db = openHelper.getWritableDatabase();
         } catch (SQLException e) {
@@ -35,7 +30,7 @@ public class WorkoutDAO {
         }
     }
 
-    public void disconnect() {
+    private void disconnect() {
         if (db != null) {
             try {
                 this.db.close();
@@ -86,7 +81,6 @@ public class WorkoutDAO {
 
     public boolean insertNewWorkoutDay(String date, int muscleGroupId) throws SQLException {
         boolean result;
-        //ExerciseDAO exerciseDAO = new ExerciseDAO();
         connect();
         ContentValues cv = new ContentValues();
         cv.put("date", date);
@@ -116,7 +110,6 @@ public class WorkoutDAO {
         Cursor data = db.rawQuery("SELECT * FROM WorkoutDay WHERE id = " + id, null);
         while (data.moveToNext()) {
             String date = data.getString(1);
-            int muscleGroup = data.getInt(2);
             workoutDay = new WorkoutDay(date);
         }
         data.close();
@@ -138,7 +131,7 @@ public class WorkoutDAO {
         return ids;
     }
 
-    public boolean deleteWorkoutDayById(int id) {
+    public boolean deleteWorkoutDayById(int id) throws SQLException {
         boolean result;
         connect();
         db.delete("WorkoutExercise", "workout_day_id = " + id, null);

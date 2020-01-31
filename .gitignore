@@ -12,3 +12,30 @@
 /captures
 .externalNativeBuild
 .cxx
+
+.idea
+gradle
+build.gradle
+gradle.properties
+gradlew
+gradlew.bat
+local.properties
+Powerful Body App.iml
+settings.gradle
+External Libraries
+
+/build
+/libs
+/src/androidTest
+/src/main/assets
+/src/res/drawable
+/src/res/drawable-v24
+/src/res/mipmap-mdpi
+/src/res/mipmap-hdpi
+/src/res/mipmap-xhdpi
+/src/res/mipmap-xxhdpi
+/src/res/mipmap-xxxhdpi
+/src/AndroidManifest.xml
+/src/app.iml
+/src/build.gradle
+/src/proguard-rules.pro

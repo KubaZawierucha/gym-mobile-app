@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Workout.WorkoutListActivity">
+    tools:context=".Workout.WorkoutListActivity"
+    android:orientation="vertical">
 
     <Button
+        style="@style/SubTitleText"
         android:id="@+id/add_new_workout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Workout"
-        android:textSize="20sp"/>
+        android:text="@string/add_new_workout" />
 
     <TextView
         android:id="@+id/workout_plan_title_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_below="@+id/add_new_workout_btn"
-        android:text="WORKOUT PLAN:"
+        android:text="@string/workout_plan"
         style="@style/TitleText"
         android:layout_marginTop="30dp"/>
 
     <ListView
         android:layout_marginTop="5dp"
         android:focusable="true"
+        android:layout_gravity="center"
         android:id="@+id/workout_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/workout_plan_title_text_view" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+</LinearLayout>
+

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.MuscleDAO;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.models.Muscle;
+import com.kubazawierucha.powerfulbodyapp.Models.Muscle;
 
 public class MuscleDetailsActivity extends AppCompatActivity {
 
@@ -21,7 +21,6 @@ public class MuscleDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_muscle_details);
 
         Intent getIntent = getIntent();
-        //String muscleGroupString = getIntent.getStringExtra("parents");
         int muscleId = getIntent.getIntExtra("muscleId", -1);
 
         muscleDAO = new MuscleDAO(this);

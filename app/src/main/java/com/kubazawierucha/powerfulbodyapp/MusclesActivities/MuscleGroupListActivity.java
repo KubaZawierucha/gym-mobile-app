@@ -3,21 +3,17 @@ package com.kubazawierucha.powerfulbodyapp.MusclesActivities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.MuscleDAO;
 import com.kubazawierucha.powerfulbodyapp.DAO.MuscleGroupDAO;
-import com.kubazawierucha.powerfulbodyapp.DbManagement.DBManager;
 import com.kubazawierucha.powerfulbodyapp.ListAdapters.ExpandableListAdapter;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.models.Muscle;
-import com.kubazawierucha.powerfulbodyapp.models.MuscleGroup;
+import com.kubazawierucha.powerfulbodyapp.Models.Muscle;
+import com.kubazawierucha.powerfulbodyapp.Models.MuscleGroup;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +24,6 @@ public class MuscleGroupListActivity extends AppCompatActivity {
     private List<MuscleGroup> muscleGroupName;
     private HashMap<MuscleGroup, List<Muscle>> muscleGroupMuscleHashMap;
 
-    private DBManager myDB;
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
 

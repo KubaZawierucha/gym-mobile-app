@@ -1,24 +1,22 @@
-package com.kubazawierucha.powerfulbodyapp;
+package com.kubazawierucha.powerfulbodyapp.Workout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.ExerciseDAO;
 import com.kubazawierucha.powerfulbodyapp.DAO.WorkoutDAO;
-import com.kubazawierucha.powerfulbodyapp.Workout.WorkoutList;
-import com.kubazawierucha.powerfulbodyapp.Workout.WorkoutListActivity;
-import com.kubazawierucha.powerfulbodyapp.models.Exercise;
-import com.kubazawierucha.powerfulbodyapp.models.WorkoutDay;
+import com.kubazawierucha.powerfulbodyapp.R;
+import com.kubazawierucha.powerfulbodyapp.Models.Exercise;
+import com.kubazawierucha.powerfulbodyapp.Models.WorkoutDay;
 
 import java.util.List;
+
+import static android.view.Gravity.CENTER;
 
 public class WorkoutDetailsActivity extends AppCompatActivity {
 
@@ -50,10 +48,28 @@ public class WorkoutDetailsActivity extends AppCompatActivity {
         for (int singleExercise: exerciseListIds) {
             Exercise currExercise = exerciseDAO.getExerciseById(singleExercise);
             LinearLayout singleExerciseRow = new LinearLayout(this);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity = CENTER;
+            layoutParams.topMargin = 50;
+            singleExerciseRow.setLayoutParams(layoutParams);
+
             singleExerciseRow.setOrientation(LinearLayout.VERTICAL);
+
             Button exerciseButton = new Button(this);
             exerciseButton.setText(currExercise.getName());
             singleExerciseRow.addView(exerciseButton);
+            TextView weightTV = (TextView) getLayoutInflater().inflate(R.layout.auto_generated_textview_template, null);
+            weightTV.setText("Weight: " + currExercise.getLastWeight());
+            singleExerciseRow.addView(weightTV);
+            TextView seriesTV = (TextView) getLayoutInflater().inflate(R.layout.auto_generated_textview_template, null);
+            seriesTV.setText("Series: " + currExercise.getLastSeriesNumber());
+            singleExerciseRow.addView(seriesTV);
+            TextView repTV = (TextView) getLayoutInflater().inflate(R.layout.auto_generated_textview_template, null);
+            repTV.setText("Repetitions: " + currExercise.getLastRepetitionsNumber());
+            singleExerciseRow.addView(repTV);
+            TextView breakTV = (TextView) getLayoutInflater().inflate(R.layout.auto_generated_textview_template, null);
+            breakTV.setText("Break: " + currExercise.getLastBreakTime());
+            singleExerciseRow.addView(breakTV);
             exercisesLinearLayout.addView(singleExerciseRow);
         }
 

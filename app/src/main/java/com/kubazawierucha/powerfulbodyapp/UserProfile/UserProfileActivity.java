@@ -14,14 +14,11 @@ import android.widget.Toast;
 
 import com.kubazawierucha.powerfulbodyapp.DAO.UserDAO;
 import com.kubazawierucha.powerfulbodyapp.R;
-import com.kubazawierucha.powerfulbodyapp.models.User;
+import com.kubazawierucha.powerfulbodyapp.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-// TODO: 22.10.2019
-// photo adding from phone
 
 public class UserProfileActivity extends AppCompatActivity {
 

@@ -6,8 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MusclesActivities.MuscleGroupListActivity">
 
+    <TextView
+        android:id="@+id/activity_muscle_group_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TitleText"
+        android:text="Select Muscle Group"/>
+
     <ExpandableListView
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/activity_muscle_group_list_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/muscle_group_lv"/>
+
+
+
 </RelativeLayout>
